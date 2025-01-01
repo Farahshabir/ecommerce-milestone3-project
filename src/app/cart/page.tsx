@@ -1,6 +1,6 @@
 "use client"; // Marking the component as a Client Component
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
