@@ -13,12 +13,10 @@ interface Product {
 
 interface CartItem {
   product: Product;
-  selectedColor: string;
 }
 
 export default function BestSeller() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [selectedColor, setSelectedColor] = useState<string>("#23A6F0"); // Default color
   const [cart, setCart] = useState<CartItem[]>([]); // Cart state
 
   useEffect(() => {
@@ -35,8 +33,8 @@ export default function BestSeller() {
 
   // Function to add product to cart
   const handleAddToCart = (product: Product) => {
-    // Add the product with selected color to the cart
-    setCart([...cart, { product, selectedColor }]);
+    // Add the product to the cart
+    setCart([...cart, { product }]);
   };
 
   return (
@@ -46,9 +44,6 @@ export default function BestSeller() {
         <h2 className="text-4xl font-extrabold text-gray-800 mb-12 text-center">
           BESTSELLER PRODUCTS
         </h2>
-        {/* <p className="text-center text-[#737373] -mt-10">
-          Problems trying to resolve the conflict between
-        </p> */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
           {products.map((product) => (
@@ -63,7 +58,6 @@ export default function BestSeller() {
                   className="h-full w-full object-cover object-top"
                   width={500}
                   height={500}
-                  style={{ filter: `hue-rotate(${selectedColor})` }} // Apply color change dynamically
                 />
               </div>
 
@@ -78,7 +72,6 @@ export default function BestSeller() {
                   <h4 className="text-lg font-bold text-gray-800 ml-10">
                     <span className="text-[#BDBDBD]">${product.price}</span>
                   </h4>
-                 
                 </div>
 
                 {/* Add to Cart Button */}
@@ -102,9 +95,7 @@ export default function BestSeller() {
             <ul className="mt-4">
               {cart.map((item, index) => (
                 <li key={index} className="flex justify-between p-2 border-b">
-                  <span>
-                    {item.product.title} - {item.selectedColor}
-                  </span>
+                  <span>{item.product.title}</span>
                   <span>${item.product.price}</span>
                 </li>
               ))}

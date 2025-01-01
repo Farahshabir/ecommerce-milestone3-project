@@ -1,7 +1,8 @@
 "use client"; // Marking the component as a Client Component
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Defining the Product interface with correct types
 interface Product {
@@ -280,9 +281,12 @@ export default function Cart() {
                     <td className="p-4">
                       <div className="flex items-center gap-4 w-max">
                         <div className="w-24 h-24 shrink-0">
-                          <img
+                          <Image
                             src={product.image}
                             className="w-full h-full object-contain"
+                            alt=""
+                            width={300} 
+                            height={300} 
                           />
                         </div>
                         <div>

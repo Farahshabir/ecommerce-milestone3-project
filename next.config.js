@@ -1,8 +1,7 @@
 // next.config.js
 
 module.exports = {
-    images: {
-      domains: ['fakestoreapi.com'], // Allow images from fakestoreapi.com
-    },
-  };
-  
+  images: {
+    domains: ['readymadeui.com'], // Add the external domain here
+  },
+};

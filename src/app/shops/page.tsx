@@ -14,12 +14,10 @@ interface Product {
 
 interface CartItem {
   product: Product;
-  selectedColor: string;
 }
 
 export default function BestSeller() {
   const [products, setProducts] = useState<Product[]>([]);
-  const [selectedColor, setSelectedColor] = useState<string>("#23A6F0"); // Default color
   const [cart, setCart] = useState<CartItem[]>([]); // Cart state
 
   useEffect(() => {
@@ -36,7 +34,7 @@ export default function BestSeller() {
   // Function to add product to cart
   const handleAddToCart = (product: Product) => {
     // Add the product with selected color to the cart
-    setCart([...cart, { product, selectedColor }]);
+    setCart([...cart, { product  }]);
   };
 
   return (
@@ -131,7 +129,6 @@ export default function BestSeller() {
                   className="h-full w-full object-cover object-top"
                   width={300}
                   height={300}
-                  style={{ filter: `hue-rotate(${selectedColor})` }} // Apply color change dynamically
                 />
               </div>
 

@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
+import Image from "next/image";
 
 export default function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState("card");
@@ -208,20 +209,26 @@ export default function Checkout() {
                       htmlFor="card"
                       className="ml-4 flex gap-2 cursor-pointer"
                     >
-                      <img
+                      <Image
                         src="https://readymadeui.com/images/visa.webp"
                         className="w-12"
                         alt="card1"
+                        width={300}
+                        height={300} 
                       />
-                      <img
+                      <Image
                         src="https://readymadeui.com/images/american-express.webp"
                         className="w-12"
                         alt="card2"
+                        width={300}
+                        height={300} 
                       />
-                      <img
+                      <Image
                         src="https://readymadeui.com/images/master.webp"
                         className="w-12"
                         alt="card3"
+                        width={300} 
+                        height={300} 
                       />
                     </label>
                   </div>
@@ -240,10 +247,12 @@ export default function Checkout() {
                       htmlFor="paypal"
                       className="ml-4 flex gap-2 cursor-pointer"
                     >
-                      <img
+                      <Image
                         src="https://readymadeui.com/images/paypal.webp"
                         className="w-20"
                         alt="paypalCard"
+                        width={300} 
+                        height={300} 
                       />
                     </label>
                   </div>
