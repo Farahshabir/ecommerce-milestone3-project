@@ -23,7 +23,7 @@ export default function BestSeller() {
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch(
-        "https://fakestoreapi.com/products/category/men's clothing"
+        "https://fakestoreapi.com/products/category/men&apos;s clothing"
       );
       const data: Product[] = await response.json(); // Explicitly define the data type
       console.log(data);

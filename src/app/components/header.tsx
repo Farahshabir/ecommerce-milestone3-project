@@ -9,8 +9,8 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const links = [
-    { name: "Men's Clothing", path: "/mens-clothing" },
-    { name: "Women's Clothing", path: "/womens-clothing" },
+    { name: "Men&apos;s Clothing", path: "/mens-clothing" },
+    { name: "Women&apos;s Clothing", path: "/womens-clothing" },
     { name: "Accessories", path: "/jewelery"},
     { name: "Sale", path: "/sale" },
   ];

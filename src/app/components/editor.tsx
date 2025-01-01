@@ -17,12 +17,12 @@ export default function Editor() {
 
         {/* Image Grid */}
         <div className="flex flex-wrap justify-center gap-6 w-[1050px] h-[500px]">
-          {/* Men's Section */}
+          {/* Men&apos;s Section */}
           <div className="max-w-[510px]">
             <Image src={carditem1} alt="" className="w-full h-auto" />
           </div>
 
-          {/* Women's Section */}
+          {/* Women&apos;s Section */}
           <div className="max-w-[300px]">
             <Image src={carditem2} alt="" className="w-full h-auto" />
           </div>

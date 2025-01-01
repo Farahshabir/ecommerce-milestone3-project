@@ -46,7 +46,7 @@ export default function BestSeller() {
   return (
     <>
       <div className="font-sans p-4 mx-auto lg:max-w-5xl md:max-w-3xl sm:max-w-full">
-        <p className="text-center">Women's Clothing</p>
+        <p className="text-center">Women&apos;s Clothing</p>
         <h2 className="text-4xl font-extrabold text-gray-800 mb-12 text-center">
           BESTSELLER PRODUCTS
         </h2>

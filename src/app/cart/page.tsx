@@ -37,7 +37,7 @@ export default function Cart() {
             // Increase quantity by 1
             return { ...product, quantity: product.quantity + 1 };
           } else if (action === "decrease" && product.quantity > 1) {
-            // Decrease quantity by 1 (don't go below 1)
+            // Decrease quantity by 1 (don&apos;t go below 1)
             return { ...product, quantity: product.quantity - 1 };
           }
         }
