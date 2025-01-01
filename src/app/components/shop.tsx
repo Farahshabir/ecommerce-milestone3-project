@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 // Define the Product type
 interface Product {
@@ -50,7 +51,7 @@ export default function Shop() {
           >
             <Link href={`/shops/${product.id}`} passHref>
               <div className="w-full aspect-w-16 aspect-h-8 lg:h-80">
-                <img
+                <Image
                   src={product.image}
                   alt={product.title}
                   className="h-full w-full object-cover object-top"
@@ -87,23 +88,6 @@ export default function Shop() {
           </div>
         ))}
       </div>
-
-      {/* Cart Display */}
-      {/* <div className="mt-10">
-        <h3 className="text-2xl font-bold text-center">Your Cart</h3>
-        {cart.length > 0 ? (
-          <ul className="mt-4">
-            {cart.map((item, index) => (
-              <li key={index} className="flex justify-between p-2 border-b">
-                <span>{item.product.title}</span>
-                <span>${item.product.price}</span>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p className="text-center text-gray-500">Your cart is empty</p>
-        )}
-      </div> */}
     </div>
   );
 }

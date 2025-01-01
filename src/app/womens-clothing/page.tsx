@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 // Define the Product type
 interface Product {
@@ -32,11 +33,6 @@ export default function BestSeller() {
     fetchProducts();
   }, []);
 
-  // Function to handle color change
-  const handleColorChange = (color: string) => {
-    setSelectedColor(color);
-  };
-
   // Function to add product to cart
   const handleAddToCart = (product: Product) => {
     // Add the product with selected color to the cart
@@ -61,7 +57,7 @@ export default function BestSeller() {
               className="bg-white rounded overflow-hidden cursor-pointer hover:scale-[1.02] transition-all"
             >
               <div className="w-full aspect-w-16 aspect-h-8 lg:h-80">
-                <img
+                <Image
                   src={product.image}
                   alt={product.title}
                   className="h-full w-full object-cover object-top"
@@ -82,25 +78,7 @@ export default function BestSeller() {
                   <h4 className="text-lg font-bold text-gray-800 ml-10">
                     <span className="text-[#BDBDBD]">${product.price}</span>
                   </h4>
-                  <div className="flex space-x-1 ml-10">
-                    {/* Color selection buttons */}
-                    <div
-                      className="w-6 h-6 bg-[#23A6F0] rounded-full cursor-pointer"
-                      onClick={() => handleColorChange("#23A6F0")}
-                    ></div>
-                    <div
-                      className="w-6 h-6 bg-[#23856D] rounded-full cursor-pointer"
-                      onClick={() => handleColorChange("#23856D")}
-                    ></div>
-                    <div
-                      className="w-6 h-6 bg-[#E77C40] rounded-full cursor-pointer"
-                      onClick={() => handleColorChange("#E77C40")}
-                    ></div>
-                    <div
-                      className="w-6 h-6 bg-[#252B42] rounded-full cursor-pointer"
-                      onClick={() => handleColorChange("#252B42")}
-                    ></div>
-                  </div>
+            
                 </div>
 
                 {/* Add to Cart Button */}

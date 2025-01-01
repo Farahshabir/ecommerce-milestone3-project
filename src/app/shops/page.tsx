@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 // Define the Product type
 interface Product {
@@ -31,11 +32,7 @@ export default function BestSeller() {
     fetchProducts();
   }, []);
 
-  // Function to handle color change
-  const handleColorChange = (color: string) => {
-    setSelectedColor(color);
-  };
-
+ 
   // Function to add product to cart
   const handleAddToCart = (product: Product) => {
     // Add the product with selected color to the cart
@@ -112,16 +109,7 @@ export default function BestSeller() {
                 </span>
               </span>
             </li>
-            {/* <li>
-              <span className="relative">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 inline" viewBox="0 0 512 512">
-                  <path d="..." />
-                </svg>
-                <span className="absolute left-auto -ml-1 -top-2 rounded-full bg-red-500 px-1 py-0 text-xs text-white">
-                  {totalCartItems}
-                </span>
-              </span>
-            </li> */}
+          
           </ul>
         </div>
       </header>
@@ -130,10 +118,6 @@ export default function BestSeller() {
         <h2 className="text-4xl font-extrabold text-gray-800 mb-12 text-center">
           BESTSELLER PRODUCTS
         </h2>
-        {/* <p className="text-center text-[#737373] -mt-10">
-          Problems trying to resolve the conflict between
-        </p> */}
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
           {products.map((product) => (
             <div
@@ -141,7 +125,7 @@ export default function BestSeller() {
               className="bg-white rounded overflow-hidden cursor-pointer hover:scale-[1.02] transition-all"
             >
               <div className="w-[300px] h-[300px]">
-                <img
+                <Image
                   src={product.image}
                   alt={product.title}
                   className="h-full w-full object-cover object-top"
@@ -181,25 +165,6 @@ export default function BestSeller() {
             </div>
           ))}
         </div>
-
-        {/* Cart Display */}
-        {/* <div className="mt-10">
-          <h3 className="text-2xl font-bold text-center">Your Cart</h3>
-          {cart.length > 0 ? (
-            <ul className="mt-4">
-              {cart.map((item, index) => (
-                <li key={index} className="flex justify-between p-2 border-b">
-                  <span>
-                    {item.product.title} - {item.selectedColor}
-                  </span>
-                  <span>${item.product.price}</span>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-center text-gray-500">Your cart is empty</p>
-          )}
-        </div> */}
       </div>
     </>
   );

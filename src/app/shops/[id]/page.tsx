@@ -3,6 +3,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 interface Product {
   id: number;
@@ -214,17 +215,21 @@ export default function ProductDetail() {
               <div className="flex flex-col gap-2">
                 <div className="grid grid-cols-3 gap-2 shrink-0">
                   <div className="bg-gray-200 flex items-center justify-center">
-                    <img
+                    <Image
                       src={product.image}
                       alt={product.title}
+                      width={500} 
+                      height={500}
                       className="object-cover object-top w-full h-full cursor-pointer"
                     />
                   </div>
                 </div>
                 <div className="flex-1">
-                  <img
+                  <Image
                     src={product.image}
                     alt={product.title}
+                    width={500} 
+                      height={500}
                     className="w-44 max-h-64 object-top object-cover"
                   />
                 </div>
