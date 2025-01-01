@@ -1,10 +1,9 @@
-"use client"; // Marking the component as a Client Component
+"use client";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-// Defining the Product interface with correct types
 interface Product {
   id: number;
   title: string;
@@ -15,48 +14,53 @@ interface Product {
 
 export default function Cart() {
   const router = useRouter();
-  // Initialize cart from localStorage
-  const [cart, setCart] = useState<Product[]>(
-    JSON.parse(localStorage.getItem("cart") || "[]")
-  );
+  const [cart, setCart] = useState<Product[]>([]);
 
-  // Save the cart to localStorage whenever it changes
+  // Load cart from localStorage only in the browser
   useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+    if (typeof window !== "undefined") {
+      const storedCart = localStorage.getItem("cart");
+      if (storedCart) {
+        setCart(JSON.parse(storedCart));
+      }
+    }
+  }, []);
 
-  // Function to remove a product from the cart
+  // Update localStorage whenever the cart changes
+  const updateLocalStorage = (updatedCart: Product[]) => {
+    setCart(updatedCart);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+    }
+  };
+
   const handleRemoveProduct = (id: number) => {
-    setCart((prevCart) => prevCart.filter((product) => product.id !== id));
+    const updatedCart = cart.filter((product) => product.id !== id);
+    updateLocalStorage(updatedCart);
   };
 
-  // Handle quantity change (increase or decrease)
-  const handleQuantityChange = (
-    id: number,
-    action: "increase" | "decrease"
-  ) => {
-    setCart((prevCart) => {
-      return prevCart.map((product) => {
-        if (product.id === id) {
-          if (action === "increase") {
-            return { ...product, quantity: product.quantity + 1 };
-          } else if (action === "decrease" && product.quantity > 1) {
-            return { ...product, quantity: product.quantity - 1 };
+  const handleQuantityChange = (id: number, action: "increase" | "decrease") => {
+    const updatedCart = cart.map((product) =>
+      product.id === id
+        ? {
+            ...product,
+            quantity:
+              action === "increase"
+                ? product.quantity + 1
+                : Math.max(1, product.quantity - 1),
           }
-        }
-        return product;
-      });
-    });
+        : product
+    );
+    updateLocalStorage(updatedCart);
   };
 
-  // Calculate total price
   const total = cart.reduce(
     (sum, product) => sum + product.price * product.quantity,
     0
   );
 
-  // Handle checkout
-  const totalCartItems = cart.reduce((total, item) => total + item.quantity, 0);
+  const totalCartItems = cart.reduce((sum, product) => sum + product.quantity, 0);
+
   const handleCheckout = () => {
     router.push("/checkout");
   };
